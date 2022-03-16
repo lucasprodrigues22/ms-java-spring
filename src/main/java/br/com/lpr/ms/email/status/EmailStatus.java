@@ -1,5 +1,7 @@
 package br.com.lpr.ms.email.status;
 
-public class EmailStatus {
+public enum EmailStatus {
 
+	SENT,
+	ERROR;
 }
