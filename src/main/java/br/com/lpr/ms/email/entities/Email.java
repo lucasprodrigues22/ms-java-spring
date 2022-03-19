@@ -28,9 +28,10 @@ public class Email {
 	private UUID id;
 	
 	@Type(type = "uuid-char")
+	@Column(name = "userid")
 	private UUID userId;
 	
-	@Column(nullable = false)
+	@Column(name="dsfrom", nullable = false)
 	private String from;
 	
 	@Column(nullable = false)
@@ -40,8 +41,9 @@ public class Email {
 	private String subject;
 	
 	@Column(nullable = false, columnDefinition = "text")
-	private String text;
+	private String body;
 	
+	@Column(name = "senddate", nullable = false)
 	private LocalDateTime sendDate;
 	
 	@Enumerated(EnumType.STRING)
