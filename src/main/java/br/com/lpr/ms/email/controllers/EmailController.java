@@ -24,10 +24,8 @@ public class EmailController {
 	
 	@PostMapping("/send")
 	public ResponseEntity<?>  send(@RequestBody @Valid EmailRequestPostDTO emailRequest){
-		Email email = new Email();
-		BeanUtils.copyProperties(emailRequest, email);
-		emailService.send(email);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(emailService.send(emailRequest));
 		
 	}
 }

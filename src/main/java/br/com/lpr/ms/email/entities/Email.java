@@ -16,6 +16,8 @@ import org.hibernate.annotations.Type;
 
 import br.com.lpr.ms.email.status.EmailStatus;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
@@ -43,7 +45,7 @@ public class Email {
 	@Column(nullable = false, columnDefinition = "text")
 	private String body;
 	
-	@Column(name = "senddate", nullable = false)
+	@Column(name = "senddate", nullable = true)
 	private LocalDateTime sendDate;
 	
 	@Enumerated(EnumType.STRING)
