@@ -3,7 +3,6 @@ package br.com.lpr.ms.email.services;
 import java.time.LocalDateTime;
 import java.util.Properties;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -16,6 +15,7 @@ import br.com.lpr.ms.email.dto.requests.EmailRequestPostDTO;
 import br.com.lpr.ms.email.entities.Email;
 import br.com.lpr.ms.email.repositories.IEmailRepository;
 import br.com.lpr.ms.email.status.EmailStatus;
+import br.com.lpr.ms.email.utils.EmailUtils;
 
 @Service
 public class EmailService {
@@ -28,7 +28,7 @@ public class EmailService {
 	
 	@SuppressWarnings("finally")
 	public Email send(EmailRequestPostDTO emailRequest) {
-		Email email = getEmailFromRequestPost(emailRequest);
+		Email email = EmailUtils.getEmailFromRequestPost(emailRequest);
 		try {
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(emailRequest.getTo());
@@ -66,10 +66,6 @@ public class EmailService {
 		return emailSender;
 	}
 	
-	private Email getEmailFromRequestPost(EmailRequestPostDTO emailRequest) {
-		Email email = new Email();
-		BeanUtils.copyProperties(emailRequest, email);
-		return email;
-	}
+	
 	
 }
