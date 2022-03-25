@@ -1,9 +1,9 @@
-package br.com.lpr.ms.email.utils;
+package br.com.lpr.ms.email.application.utils;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.lpr.ms.email.dto.requests.EmailRequestPostDTO;
-import br.com.lpr.ms.email.entities.Email;
+import br.com.lpr.ms.email.adapters.inbound.dto.requests.EmailRequestPostDTO;
+import br.com.lpr.ms.email.application.entities.Email;
 
 public class EmailUtils {
 

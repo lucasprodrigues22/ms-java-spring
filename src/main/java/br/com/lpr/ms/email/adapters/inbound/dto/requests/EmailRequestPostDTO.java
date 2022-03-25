@@ -1,4 +1,4 @@
-package br.com.lpr.ms.email.dto.requests;
+package br.com.lpr.ms.email.adapters.inbound.dto.requests;
 
 import java.util.UUID;
 

@@ -1,6 +1,8 @@
-package br.com.lpr.ms.email;
+package br.com.lpr.ms.email.adapters.configuration;
 
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +14,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitQMConfig {
 	
-	@Value("${spring.rabbitmq.queue}")
+	@Value("ms.email")
 	private String queue;
+	
+	@Value("amqps://czehugwm:1bviVidpocnfYFuvLQyh8rBDOkX4c9zB@fish.rmq.cloudamqp.com/czehugwm")
+	private String uri;
+	
+	
+	/**
+	 * Configuração do rabbitMQ para conexão
+	 */
+	@Bean
+	public ConnectionFactory rabbitConnectionFactory() {
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
+		connectionFactory.setUri(uri);
+		return connectionFactory;
+	}
 	
 	
 	/**

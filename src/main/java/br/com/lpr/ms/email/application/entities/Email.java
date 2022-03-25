@@ -1,4 +1,4 @@
-package br.com.lpr.ms.email.entities;
+package br.com.lpr.ms.email.application.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,10 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
-import br.com.lpr.ms.email.status.EmailStatus;
+import br.com.lpr.ms.email.application.enums.EmailStatus;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,4 +51,7 @@ public class Email {
 	
 	@Enumerated(EnumType.STRING)
 	private EmailStatus status;
+	
+	@Transient
+	private String password;
 }
